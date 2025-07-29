@@ -44,20 +44,24 @@ def show_menu(chat_id):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
     if call.data == "faucets":
-        text = "🧴 Список кранов:
-
-"
+        text = "🧴 Список кранов:\n\n"
         for f in faucets:
-            text += f"🔹 <b>{f['name']}</b> — [Перейти]({f['link']})
-"
+            text += f"🔹 <b>{f['name']}</b> — <a href=\"{f['link']}\">Перейти</a>\n"
         bot.send_message(call.message.chat.id, text, parse_mode="HTML", disable_web_page_preview=True)
     elif call.data == "ref":
         user_id = call.from_user.id
         cursor.execute("SELECT COUNT(*) FROM users WHERE referred_by=?", (user_id,))
         count = cursor.fetchone()[0]
-        bot.send_message(user_id, f"👥 У вас {count} рефералов
-🔗 Ваша ссылка:
-https://t.me/{bot.get_me().username}?start={user_id}")
+        username = bot.get_me().username
+        referral_text = (
+            f"👥 У вас {count} рефералов\n"
+            f"🔗 Ваша ссылка:\n"
+            f"https://t.me/{username}?start={user_id}"
+        )
+        bot.send_message(user_id, referral_text)
+
+# Запуск
+bot.infinity_polling()
 
 # Запуск
 bot.infinity_polling()
