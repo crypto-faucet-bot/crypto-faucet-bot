@@ -1,0 +1,16 @@
+[
+  {
+    "name": "FreeBitcoin",
+    "coin": "BTC",
+    "interval": "60 мин",
+    "protection": "reCAPTCHA",
+    "url": "https://freebitco.in/?r=ТВОЙ_РЕФ"
+  },
+  {
+    "name": "FaucetPay",
+    "coin": "Multi",
+    "interval": "30 мин",
+    "protection": "Captcha",
+    "url": "https://faucetpay.io/r/ТВОЙ_РЕФ"
+  }
+]
