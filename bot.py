@@ -62,6 +62,3 @@ def callback_query(call):
 
 # Запуск
 bot.infinity_polling()
-
-# Запуск
-bot.infinity_polling()
